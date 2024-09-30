@@ -1,0 +1,36 @@
+﻿
+
+import urequests import dht import machine import time
+d = dht.DHT11(machine.Pin(4))
+
+def conecta(ssid, senha):
+import network
+import time
+station network. WLAN (network.STA_IF) station.active(True) station.connect(ssid, senha)
+for t in range(50):
+if station.isconnected():
+break
+time.sleep(0.1)
+return station
+while True:
+d. measure()
+station conecta ("VIVOFIBRA-7330", "EE8AC4CC25") if not station.isconnected():
+
+﻿
+
+while True:
+d. measure()
+station conecta ("VIVOFIBRA-7330", "EE8AC4CC25")
+if not station.isconnected():
+else:
+print("Não conectado!!")
+print("Conectado!!")
+print("Acessando o site...")
+url = 'https://api.thingspeak.com/update?api_key=L1HLSL4WNJCSA02R&field1={}&field2={}'.format(
+d.temperature(), d.humidity())
+resposta urequests.get(url)
+print("Página acessada: ")
+print (resposta.text)
+station.disconnect()
+time.sleep(15)
+I
