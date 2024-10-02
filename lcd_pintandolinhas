@@ -1,0 +1,35 @@
+// C++ code
+//
+
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+byte simbolo[8] {B11111,
+                 B11111,
+                 B11111,
+                 B11111,
+                 B11111,
+                 B11111,
+                 B11111,
+                 B11111};
+
+void setup()
+{
+  Serial.begin(9600);
+  lcd.begin(16, 2);
+  pinMode(LED_BUILTIN, OUTPUT);
+  lcd.createChar(1, simbolo);
+}
+
+void loop()
+{
+  for(int i = 0; i < 16; i++){
+    lcd.setCursor(i, 0);
+  	lcd.write(1);
+    lcd.setCursor(15-i, 1);
+  	lcd.write(1);
+    delay(500);
+  }
+  lcd.clear();
+}
