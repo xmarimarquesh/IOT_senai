@@ -14,7 +14,8 @@ int segundoValor;
 String operacao;
 String op;
 
-float resultado;
+int resultado;
+float resultadoDivisao;
 
 int pot = A0;
 int pot2 = A1;
@@ -61,20 +62,36 @@ void loop()
       case 5:
           operacao = "Divisao";
           op = " / ";
-          resultado = float(primeiroValor) / segundoValor;
+          resultadoDivisao = float(primeiroValor) / segundoValor;
           break;
       default:
           break;
     }
-    lcd.clear();
-    lcd.print(operacao);
-    lcd.setCursor(0, 1);
-    lcd.print(primeiroValor);
-    lcd.print(op);
-    lcd.print(segundoValor);
-    lcd.print(" = ");
-    lcd.print(resultado);
-  	delay(1000);
+    
+    if (qualOperacao == 5){
+      lcd.clear();
+      lcd.print(operacao);
+      lcd.setCursor(0, 1);
+      lcd.print(primeiroValor);
+      lcd.print(op);
+      lcd.print(segundoValor);
+      lcd.print(" = ");
+      lcd.print(resultadoDivisao);
+      delay(1000);
+    } else {
+      lcd.clear();
+      lcd.print(operacao);
+      lcd.setCursor(0, 1);
+      lcd.print(primeiroValor);
+      lcd.print(op);
+      lcd.print(segundoValor);
+      lcd.print(" = ");
+      lcd.print(resultado);
+      delay(1000);
+    
+    }
+    
+    
   }
    
   
