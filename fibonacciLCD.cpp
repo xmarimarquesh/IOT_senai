@@ -246,27 +246,28 @@ void loop(){
       	segundoDigito = valor % 10;
       
       	numeros(1, primeiroDigito);
-      	numeros(5, segundoDigito);
+      	numeros(4, segundoDigito);
       
-    }else if(valor > 99 && valor <= 999){
+    }else if(valor > 99 && valor < 999){
       	primeiroDigito = (valor / 10) / 10;
       	segundoDigito = (valor / 10) % 10;
       	terceiroDigito = (valor % 100) / 10;
       
     	numeros(1, primeiroDigito);
-      	numeros(5, segundoDigito);
-      	numeros(9, terceiroDigito);
+      	numeros(4, segundoDigito);
+      	numeros(7, terceiroDigito);
       
-    }else if(valor > 999 && valor <= 9999){
+    }else if(valor > 999 && valor < 9999){
+      Serial.println("ENTROU");
       	primeiroDigito = valor / 1000;
-      	segundoDigito = ((valor / 10) % 10) % 10;
-      	terceiroDigito = (valor % 100) / 100;
-      	quartoDigito = (valor % 100) / 100;
+      	segundoDigito = (valor % 1000) / 100;
+      	terceiroDigito = ((valor % 1000) / 100) / 10;
+      	quartoDigito = ((valor % 1000) / 100) % 10;
       
     	numeros(1, primeiroDigito);
-      	numeros(5, segundoDigito);
-      	numeros(9, terceiroDigito);
-      	numeros(13, quartoDigito);
+      	numeros(4, segundoDigito);
+      	numeros(7, terceiroDigito);
+      	numeros(10, quartoDigito);
       
     }else{
     	numeros(1, valor);
