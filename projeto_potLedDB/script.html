@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extrair Dados JSON com JavaScript</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dados JSON da API</h1>
+  <table id="tabela">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NOME</th>
+        <th>SENSOR</th>
+        <th>VALOR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Os dados serão inseridos aqui -->
+    </tbody>
+  </table>
+
+  <script>
+    // Substitua pela URL que retorna dados JSON
+    const url = 'http://iot.paparella.com.br/'; // Exemplo de URL, substitua pela real
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro na requisição: ' + response.status);
+        }
+        return response.json(); // Obtém o conteúdo da página como JSON
+      })
+      .then(data => {
+        console.log(data); // Exibe os dados JSON no console
+        const tbody = document.querySelector('#tabela tbody');
+        data.forEach(item => {
+          if(item.nome_aluno == "Mariana / Juliana"){
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>${item.id || 'ID não encontrado'}</td>
+              <td>${item.nome_aluno || 'Nome não encontrado'}</td>
+              <td>${item.nome_sensor || 'Descrição não encontrada'}</td>
+              <td>${item.valor_sensor || 'Valor não encontrado'}</td>
+            `;
+            tbody.appendChild(tr);
+          }
+        });
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        document.getElementById('tabela').innerHTML = `
+          <tr><td colspan="4">Erro ao carregar o conteúdo: ${error}</td></tr>
+        `;
+      });
+  </script>
+</body>
+</html>
